@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ufftymuit6v5"]
+
+[ext_resource type="PackedScene" uid="uid://fpiy0si75x1s" path="res://scenes/player.tscn" id="1_7daim"]
+
+[sub_resource type="Gradient" id="Gradient_yw8wa"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_13lur"]
+gradient = SubResource("Gradient_yw8wa")
+fill_to = Vector2(1, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(780, 397)
+scale = Vector2(63.3437, 32.9688)
+texture = SubResource("GradientTexture2D_13lur")
+
+[node name="Player" parent="." instance=ExtResource("1_7daim")]

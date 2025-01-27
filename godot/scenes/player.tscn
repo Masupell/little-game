@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://fpiy0si75x1s"]
+
+[ext_resource type="Texture2D" uid="uid://d2d1hsev44hdm" path="res://icon.svg" id="1_ninpd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_knsrn"]
+radius = 54.0
+height = 108.0
+
+[node name="Player" type="Player"]
+position = Vector2(807, 623)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("1_ninpd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_knsrn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true

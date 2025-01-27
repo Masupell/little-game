@@ -1,5 +1,7 @@
 use godot::prelude::*;
 
+pub mod player;
+
 pub struct LittleGame;
 
 #[gdextension]

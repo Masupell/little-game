@@ -15,6 +15,7 @@ scale = Vector2(0.85, 0.85)
 texture = ExtResource("1_ninpd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_knsrn")
 
 [node name="Camera2D" type="Camera2D" parent="."]

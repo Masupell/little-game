@@ -1,4 +1,4 @@
-use godot::{classes::{CharacterBody2D, ICharacterBody2D}, global::move_toward, prelude::*};
+use godot::{classes::{CharacterBody2D, ICharacterBody2D, Sprite2D}, global::move_toward, prelude::*};
 
 const SPEED: f32 = 350.0; // # Base horizontal movement speed
 const ACCELERATION: f64 = 1200.0; // # Base acceleration

@@ -1,6 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737995365
+::res://::1738171702
 icon.svg::CompressedTexture2D::9062146057531185126::1737883198::1737883202::1::::<><>::
 rust.gdextension::GDExtension::-1::1737892399::0::1::::<><>::
 ::res://art/::1737883208
+::res://scenes/::1737998185
+node_2d.tscn::PackedScene::1414437556597210876::1737998185::0::1::::<><>::uid://fpiy0si75x1s::::res://scenes/player.tscn
+player.tscn::PackedScene::382439820794593618::1737998184::0::1::::<><>::uid://d2d1hsev44hdm::::res://icon.svg
 ::res://sounds/::1737883213

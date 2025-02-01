@@ -16,7 +16,7 @@ void fragment()
 	d = sin(d*8.0+TIME)/8.0;
 	d = abs(d);
 	d = pow(0.02/d, 1.2);
-	vec3 final = vec3(input_color.r+d, input_color.g+d, input_color.b+d);
 	
+	vec3 final = vec3(input_color.r+d, input_color.g+d, input_color.b+d);
 	COLOR = vec4(final, input_color.a);
 }

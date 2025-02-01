@@ -3,14 +3,10 @@
 [ext_resource type="Shader" path="res://playertest.gdshader" id="1_r207f"]
 [ext_resource type="Texture2D" uid="uid://cin08r3mdacmm" path="res://art/player-walk-cycle/player-walk-cycle-seitlich/walkcycleseitl.png" id="2_5bxhr"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_knsrn"]
-radius = 54.0
-height = 108.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pf01t"]
 shader = ExtResource("1_r207f")
 shader_parameter/size = Vector2(304, 421)
-shader_parameter/frame = 5.0
+shader_parameter/frame = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_si6ik"]
 atlas = ExtResource("2_5bxhr")
@@ -90,20 +86,24 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_knsrn"]
+radius = 92.0
+height = 430.0
+
 [node name="Player" type="Player"]
 position = Vector2(819, 620)
 metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_knsrn")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-position_smoothing_enabled = true
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_pf01t")
 sprite_frames = SubResource("SpriteFrames_w6udv")
 animation = &"walk-horizontal"
 autoplay = "walk-horizontal"
-frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_knsrn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.17, 2.17)
+position_smoothing_enabled = true

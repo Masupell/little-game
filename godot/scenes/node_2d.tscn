@@ -1,64 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://ufftymuit6v5"]
+[gd_scene load_steps=4 format=3 uid="uid://ufftymuit6v5"]
 
 [ext_resource type="PackedScene" uid="uid://fpiy0si75x1s" path="res://scenes/player.tscn" id="1_7daim"]
-[ext_resource type="Shader" path="res://player.gdshader" id="1_wfltd"]
-[ext_resource type="Shader" path="res://node_2d2.gdshader" id="3_rk8ee"]
-[ext_resource type="Shader" path="res://node_2d.gdshader" id="3_x30hc"]
-[ext_resource type="Shader" path="res://node_2d3.gdshader" id="5_xpxqd"]
+[ext_resource type="Texture2D" uid="uid://cb3oqu3pgit4g" path="res://art/map.png" id="1_st7xi"]
 
-[sub_resource type="Gradient" id="Gradient_kudjp"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ft0r3"]
-gradient = SubResource("Gradient_kudjp")
-fill_from = Vector2(1, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pq6q"]
-shader = ExtResource("1_wfltd")
-
-[sub_resource type="Gradient" id="Gradient_rxx8w"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0lfex"]
-gradient = SubResource("Gradient_rxx8w")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdcbe"]
-shader = ExtResource("3_x30hc")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bmx7"]
-shader = ExtResource("3_rk8ee")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vrng6"]
-shader = ExtResource("5_xpxqd")
+[sub_resource type="CanvasTexture" id="CanvasTexture_n2grd"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(334.25, 164.25)
-scale = Vector2(669.5, 329.5)
-texture = SubResource("GradientTexture2D_ft0r3")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_4pq6q")
-position = Vector2(960.5, 539)
-scale = Vector2(100, 100)
-texture = SubResource("GradientTexture2D_0lfex")
+position = Vector2(9642.75, 5484.25)
+scale = Vector2(19286.5, 10969.5)
+texture = SubResource("CanvasTexture_n2grd")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_jdcbe")
-position = Vector2(7361, 539)
-scale = Vector2(100, 100)
-texture = SubResource("GradientTexture2D_0lfex")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_2bmx7")
-position = Vector2(-5503, 571)
-scale = Vector2(100, 100)
-texture = SubResource("GradientTexture2D_0lfex")
-
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_vrng6")
-position = Vector2(991, -5774)
-scale = Vector2(100, 100)
-texture = SubResource("GradientTexture2D_0lfex")
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(9429.33, 5359.5)
+scale = Vector2(10.0972, 10.0972)
+texture = ExtResource("1_st7xi")
 
 [node name="Player" parent="." instance=ExtResource("1_7daim")]
-position = Vector2(833, -5462)
+speed = 15000.0
+position = Vector2(7793, 6717)

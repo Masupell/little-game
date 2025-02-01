@@ -98,7 +98,7 @@ metadata/_edit_group_ = true
 shape = SubResource("CapsuleShape2D_knsrn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.205, 2.205)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]

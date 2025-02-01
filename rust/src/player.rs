@@ -6,7 +6,9 @@ const SPEED: f32 = 700.0; // # Base horizontal movement speed
 #[class(base=CharacterBody2D)]
 pub struct Player
 {
-    base: Base<CharacterBody2D>
+    base: Base<CharacterBody2D>,
+    #[export]
+    speed: f32
 }
 
 #[godot_api]
@@ -16,7 +18,8 @@ impl ICharacterBody2D for Player
     {
         Self
         {
-            base
+            base,
+            speed: 1200.0
         }
     }
 
@@ -42,10 +45,11 @@ impl ICharacterBody2D for Player
     fn physics_process(&mut self, dt: f64)
     {
         let input = Input::singleton();
+        let speed = self.speed;
 
         let direction = input.get_vector("left", "right", "up", "down");
 
-        self.base_mut().set_velocity(direction * SPEED * dt as f32);
+        self.base_mut().set_velocity(direction * speed * dt as f32);
 
         self.base_mut().move_and_slide();
         
@@ -66,6 +70,15 @@ impl ICharacterBody2D for Player
         // {
         //     anim.play();
         // }
+
+        if direction.x != 0.0 || direction.y != 0.0
+        {
+            sprite.play();
+        }
+        else
+        {
+            sprite.pause();
+        }
 
         if direction.x < 0.0
         {

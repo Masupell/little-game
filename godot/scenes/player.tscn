@@ -1,29 +1,109 @@
-[gd_scene load_steps=5 format=3 uid="uid://fpiy0si75x1s"]
+[gd_scene load_steps=16 format=3 uid="uid://fpiy0si75x1s"]
 
-[ext_resource type="Texture2D" uid="uid://d2d1hsev44hdm" path="res://icon.svg" id="1_ninpd"]
 [ext_resource type="Shader" path="res://playertest.gdshader" id="1_r207f"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2kb70"]
-shader = ExtResource("1_r207f")
-shader_parameter/test = 1.0
-shader_parameter/size = Vector2(1, 1)
+[ext_resource type="Texture2D" uid="uid://cin08r3mdacmm" path="res://art/player-walk-cycle/player-walk-cycle-seitlich/walkcycleseitl.png" id="2_5bxhr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_knsrn"]
 radius = 54.0
 height = 108.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf01t"]
+shader = ExtResource("1_r207f")
+shader_parameter/size = Vector2(304, 421)
+shader_parameter/frame = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si6ik"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(0, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aowum"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(304, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sya8"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(608, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y032v"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(912, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38c42"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(1216, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu1w3"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(1520, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov856"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(1824, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h1yn"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(2128, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkp1w"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(2432, 0, 304, 421)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_602ur"]
+atlas = ExtResource("2_5bxhr")
+region = Rect2(2736, 0, 304, 421)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6udv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si6ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aowum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sya8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y032v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38c42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu1w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov856")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h1yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkp1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_602ur")
+}],
+"loop": true,
+"name": &"walk-horizontal",
+"speed": 10.0
+}]
+
 [node name="Player" type="Player"]
-position = Vector2(807, 623)
+position = Vector2(819, 620)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_2kb70")
-scale = Vector2(0.85, 0.85)
-texture = ExtResource("1_ninpd")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_knsrn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.205, 2.205)
 position_smoothing_enabled = true
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pf01t")
+sprite_frames = SubResource("SpriteFrames_w6udv")
+animation = &"walk-horizontal"
+autoplay = "walk-horizontal"
+frame = 5

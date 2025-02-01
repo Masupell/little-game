@@ -1,7 +1,6 @@
-use godot::{classes::{CharacterBody2D, ICharacterBody2D, ShaderMaterial, Sprite2D}, global::move_toward, prelude::*};
+use godot::{classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D}, prelude::*};
 
-const SPEED: f32 = 350.0; // # Base horizontal movement speed
-const ACCELERATION: f64 = 1200.0; // # Base acceleration
+const SPEED: f32 = 700.0; // # Base horizontal movement speed
 
 #[derive(GodotClass)]
 #[class(base=CharacterBody2D)]
@@ -24,35 +23,74 @@ impl ICharacterBody2D for Player
     fn ready(&mut self)
     {
         godot_print!("Player Created");
-        let sprite = self.base().get_node_as::<Sprite2D>("Sprite2D");
-        let size = sprite.get_texture().unwrap().get_size();
+        let sprite = self.base().get_node_as::<AnimatedSprite2D>("PlayerSprite");
+
+        let sprite_frames = sprite.get_sprite_frames().unwrap();
+        let name = sprite.get_animation();
+        let frame = sprite.get_frame();
+        let texture = sprite_frames.get_frame_texture(&name, frame).unwrap();
+
+        let size = texture.get_size();
         let scale = sprite.get_scale();
         let mut material = sprite.get_material().unwrap();
-        material.set("shader_parameter/test", &Variant::from(0.0));
         material.set("shader_parameter/size", &Variant::from(size*scale));
-        godot_print!("Size: {:?}", size);
+
+        self.base_mut().set_process_priority(1);
+        self.base_mut().set_process(true);
     }
 
-    fn physics_process(&mut self, delta: f64)
+    fn physics_process(&mut self, dt: f64)
     {
         let input = Input::singleton();
 
         let direction = input.get_vector("left", "right", "up", "down");
 
-        self.base_mut().set_velocity(direction * SPEED);
+        self.base_mut().set_velocity(direction * SPEED * dt as f32);
 
         self.base_mut().move_and_slide();
         
 
-        let sprite = self.base().get_node_as::<Sprite2D>("Sprite2D");
-        let mouse_pos = sprite.get_local_mouse_position();
-        if input.is_action_just_pressed("mouse_left")
-        {
-            godot_print!("Mouse Pos: {:?}", mouse_pos);
-        }
-        // godot_print!("Mouse Pos: {:?}", mouse_pos);
+        let mut sprite = self.base().get_node_as::<AnimatedSprite2D>("PlayerSprite");
         // let mut material = sprite.get_material().unwrap();
-        // material.set("shader_parameter/test", &Variant::from(1.0));
+        // let mut anim = self.base().get_node_as::<AnimationPlayer>("AnimationPlayer");
+
+        // let frame_time = anim.get_current_animation_position();
+        // let frame = ((frame_time * 10.0) as i32) as f32;
+        // material.set("shader_parameter/frame", &Variant::from(frame));
+
+        // if input.is_action_just_pressed("mouse_left")
+        // {
+        //     anim.pause();
+        // }
+        // if input.is_action_just_pressed("mouse_right")
+        // {
+        //     anim.play();
+        // }
+
+        if direction.x < 0.0
+        {
+            sprite.set_flip_h(true);
+        }
+        else if direction.x > 0.0
+        {
+            sprite.set_flip_h(false);
+        }
+
+        // let anim = self.base().get_node_as::<AnimatedSprite2D>("AnimatedSprite2D");
+        // let anim_name = anim.get_animation();
+        // let sprite_frames = anim.get_sprite_frames();
+        // let frame = anim.get_frame();
+        // let mut material = anim.get_material().unwrap();
+        // godot_print!("Frame: {}", frame);
+        // material.set("shader_parameter/frame", &Variant::from(frame));
+    }
+
+    fn process(&mut self, _: f64) 
+    {
+        let anim = self.base().get_node_as::<AnimatedSprite2D>("PlayerSprite");
+        let frame = anim.get_frame();
+        let mut material = anim.get_material().unwrap();
+        material.set("shader_parameter/frame", &Variant::from(frame));
     }
 }
 

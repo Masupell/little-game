@@ -54,11 +54,11 @@ position = Vector2(-5503, 571)
 scale = Vector2(100, 100)
 texture = SubResource("GradientTexture2D_0lfex")
 
-[node name="Player" parent="." instance=ExtResource("1_7daim")]
-position = Vector2(965, 578)
-
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vrng6")
 position = Vector2(991, -5774)
 scale = Vector2(100, 100)
 texture = SubResource("GradientTexture2D_0lfex")
+
+[node name="Player" parent="." instance=ExtResource("1_7daim")]
+position = Vector2(833, -5462)

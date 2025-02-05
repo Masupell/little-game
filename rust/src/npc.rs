@@ -18,3 +18,13 @@ impl ICharacterBody2D for NPC
         }
     }
 }
+
+#[godot_api]
+impl NPC
+{
+    // #[func]
+    // fn clicked()
+    // {
+    //     godot_print!("NPC Clicked");
+    // }
+}

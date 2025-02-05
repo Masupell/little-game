@@ -18,3 +18,9 @@ impl INode2D for Main
         }
     }
 }
+
+#[godot_api]
+impl Main
+{
+
+}

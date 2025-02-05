@@ -10,3 +10,6 @@ speed = 30.0
 
 [node name="NPC" parent="." instance=ExtResource("2_2f5hv")]
 position = Vector2(2406, 1099)
+
+[connection signal="mouse_entered" from="Player" to="." method="test"]
+[connection signal="input_event" from="NPC" to="Player" method="mouse_over_npc"]

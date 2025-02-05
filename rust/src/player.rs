@@ -1,4 +1,4 @@
-use godot::{classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D}, prelude::*};
+use godot::{classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D, InputEvent, Viewport}, prelude::*};
 
 // const SPEED: f32 = 700.0; // # Base horizontal movement speed
 
@@ -26,7 +26,8 @@ impl ICharacterBody2D for Player
     fn ready(&mut self)
     {
         godot_print!("Player Created");
-        let sprite = self.base().get_node_as::<AnimatedSprite2D>("PlayerSprite");
+        let mut sprite = self.base().get_node_as::<AnimatedSprite2D>("PlayerSprite");
+        sprite.pause();
 
         let sprite_frames = sprite.get_sprite_frames().unwrap();
         let name = sprite.get_animation();
@@ -111,3 +112,16 @@ impl ICharacterBody2D for Player
 // {
 //     material.set(format!("shader_parameter/{}", param_name), &value);
 // }
+
+#[godot_api]
+impl Player
+{
+    #[func]
+    fn mouse_over_npc(&mut self, _viewport: Gd<Viewport>, event: Gd<InputEvent>, _shape_idx: i64)
+    {
+        if event.is_action_pressed("mouse_left")
+        {
+            godot_print!("Mouse Left Pressed");
+        }
+    }
+}

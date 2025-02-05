@@ -92,6 +92,7 @@ height = 430.0
 
 [node name="Player" type="Player"]
 position = Vector2(819, 620)
+input_pickable = true
 metadata/_edit_group_ = true
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
@@ -101,7 +102,6 @@ animation = &"walk-horizontal"
 autoplay = "walk-horizontal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_knsrn")
 
 [node name="Camera2D" type="Camera2D" parent="."]

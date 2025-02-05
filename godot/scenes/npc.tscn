@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://506y6y8lrtpe"]
+
+[ext_resource type="Shape2D" uid="uid://dcfg3b5q016ap" path="res://npc/npc_collision.tres" id="1_fk4dy"]
+
+[sub_resource type="Gradient" id="Gradient_7xxyf"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yr1tb"]
+gradient = SubResource("Gradient_7xxyf")
+fill_to = Vector2(1, 1)
+
+[node name="NPC" type="NPC"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("1_fk4dy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("1_fk4dy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = SubResource("GradientTexture2D_yr1tb")

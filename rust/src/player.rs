@@ -1,6 +1,6 @@
 use godot::{classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D}, prelude::*};
 
-const SPEED: f32 = 700.0; // # Base horizontal movement speed
+// const SPEED: f32 = 700.0; // # Base horizontal movement speed
 
 #[derive(GodotClass)]
 #[class(base=CharacterBody2D)]
@@ -19,7 +19,7 @@ impl ICharacterBody2D for Player
         Self
         {
             base,
-            speed: 1200.0
+            speed: 20.0
         }
     }
 
@@ -49,7 +49,7 @@ impl ICharacterBody2D for Player
 
         let direction = input.get_vector("left", "right", "up", "down");
 
-        self.base_mut().set_velocity(direction * speed * dt as f32);
+        self.base_mut().set_velocity(direction * speed * 1000.0 * dt as f32);
 
         self.base_mut().move_and_slide();
         

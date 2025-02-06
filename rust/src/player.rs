@@ -1,4 +1,4 @@
-use godot::{classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D, InputEvent, Viewport}, prelude::*};
+use godot::{classes::{AnimatedSprite2D, CharacterBody2D, ICharacterBody2D}, prelude::*};
 
 // const SPEED: f32 = 700.0; // # Base horizontal movement speed
 
@@ -116,12 +116,12 @@ impl ICharacterBody2D for Player
 #[godot_api]
 impl Player
 {
-    #[func]
-    fn mouse_over_npc(&mut self, _viewport: Gd<Viewport>, event: Gd<InputEvent>, _shape_idx: i64)
-    {
-        if event.is_action_pressed("mouse_left")
-        {
-            godot_print!("Mouse Left Pressed");
-        }
-    }
+    // #[func]
+    // fn mouse_over_npc(&mut self, _viewport: Gd<Viewport>, event: Gd<InputEvent>, _shape_idx: i64)
+    // {
+    //     if event.is_action_pressed("mouse_left")
+    //     {
+    //         godot_print!("Mouse Left Pressed");
+    //     }
+    // }
 }

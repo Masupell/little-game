@@ -1,12 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://fpiy0si75x1s"]
+[gd_scene load_steps=14 format=3 uid="uid://fpiy0si75x1s"]
 
-[ext_resource type="Shader" path="res://playertest.gdshader" id="1_r207f"]
 [ext_resource type="Texture2D" uid="uid://cin08r3mdacmm" path="res://art/player-walk-cycle/player-walk-cycle-seitlich/walkcycleseitl.png" id="2_5bxhr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf01t"]
-shader = ExtResource("1_r207f")
-shader_parameter/size = Vector2(304, 421)
-shader_parameter/frame = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_si6ik"]
 atlas = ExtResource("2_5bxhr")
@@ -96,7 +90,6 @@ input_pickable = true
 metadata/_edit_group_ = true
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_pf01t")
 sprite_frames = SubResource("SpriteFrames_w6udv")
 animation = &"walk-horizontal"
 autoplay = "walk-horizontal"

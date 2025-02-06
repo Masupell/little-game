@@ -1,4 +1,4 @@
-use godot::prelude::*;
+use godot::{classes::{CharacterBody2D, ColorRect, InputEvent, Viewport}, prelude::*};
 
 #[derive(GodotClass)]
 #[class(base=Node2D)]
@@ -22,5 +22,21 @@ impl INode2D for Main
 #[godot_api]
 impl Main
 {
-
+    #[func]
+    fn mouse_over_npc(&mut self, _viewport: Gd<Viewport>, event: Gd<InputEvent>, _shape_idx: i64)
+    {
+        if event.is_action_pressed("mouse_right")
+        {
+            let npc = self.base().get_node_as::<CharacterBody2D>("NPC");
+            let mut text_box = npc.get_node_as::<ColorRect>("ColorRect");
+            if text_box.is_visible()
+            {
+                text_box.hide();
+            }
+            else 
+            {
+                text_box.show();   
+            }
+        }
+    }
 }

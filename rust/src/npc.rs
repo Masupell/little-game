@@ -1,4 +1,4 @@
-use godot::{classes::{CharacterBody2D, ICharacterBody2D}, prelude::*};
+use godot::{classes::{CharacterBody2D, ColorRect, ICharacterBody2D}, prelude::*};
 
 #[derive(GodotClass)]
 #[class(base=CharacterBody2D)]
@@ -16,6 +16,12 @@ impl ICharacterBody2D for NPC
         {
             base
         }
+    }
+
+    fn ready(&mut self)
+    {
+        let mut text_box = self.base().get_node_as::<ColorRect>("ColorRect");
+        text_box.hide();
     }
 }
 

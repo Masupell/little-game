@@ -90,6 +90,15 @@ impl ICharacterBody2D for Player
             sprite.set_flip_h(false);
         }
 
+        if direction.x.abs() > 0.0
+        {
+            sprite.set_animation("walk-horizontal");   
+        }
+        else 
+        {
+            sprite.set_animation("walk-forwards");
+        }
+
         // let anim = self.base().get_node_as::<AnimatedSprite2D>("AnimatedSprite2D");
         // let anim_name = anim.get_animation();
         // let sprite_frames = anim.get_sprite_frames();
